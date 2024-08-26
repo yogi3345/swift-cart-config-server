@@ -1,16 +1,18 @@
 server:
   port: 8071
+
 spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    active: git
   cloud:
     config:
       server:
-        native:
-          search-locations: "classpath:/configs,classpath:/configs/{application},classpath:/configs/common,classpath:/configs/{application}/{profile}"
+        git:
+          uri: "https://github.com/yogi3345/swiftcart-config-store"
+          searchPaths: "configs/{application},configs/common"
+          cloneOnStart: true
   logging:
     level:
       root: DEBUG
-
